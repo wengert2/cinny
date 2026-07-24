@@ -56,6 +56,13 @@ export const UrlPreviewCard = as<'div', { url: string; ts: number }>(
               tabIndex={0}
               onKeyDown={(evt) => onEnterOrSpace(() => setViewer(true))(evt)}
               onClick={() => setViewer(true)}
+              onError={
+                imgUrl && imgUrl !== thumbUrl
+                  ? (e) => {
+                      e.currentTarget.src = imgUrl;
+                    }
+                  : undefined
+              }
             />
           )}
           {imgUrl && (
